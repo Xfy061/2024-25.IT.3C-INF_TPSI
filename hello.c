@@ -19,10 +19,9 @@ int OR(int a, int B) {
     // TODO aggiungere l'espressione matematica per soddisfare la porta OR
     return (a+B)-(a*B);
 }
-
 int main() {
     // Dichiara una variabile
-    int A, B;
+    int A, B, C, D, E, F;
 
     // Mostra un messaggio sul terminale che l'utente può leggere
     printf("Inserisci il valore di A (0 o 1):\n");
@@ -30,35 +29,58 @@ int main() {
     scanf("%d", &A);
     // Mostra un messaggio sul terminale che l'utente può leggere
     printf("Hai inserito il valore A: %d\n", A);
-
     // Mostra un messaggio sul terminale che l'utente può leggere
     printf("Inserisci il valore di B (0 o 1):\n");
     // Attende che l'utente inserisca un valore e prema invio
     scanf("%d", &B);
     // Mostra un messaggio sul terminale che l'utente può leggere
     printf("Hai inserito il valore B: %d\n", B);
+    // Mostra un messaggio sul terminale che l'utente può leggere
+    printf("Inserisci il valore di C (0 o 1):\n");
+    // Attende che l'utente inserisca un valore e prema invio
+    scanf("%d", &C);
+    // Mostra un messaggio sul terminale che l'utente può leggere
+    printf("Inserisci il valore di D (0 o 1):\n");
+    // Attende che l'utente inserisca un valore e prema invio
+    scanf("%d", &D);
+    // Mostra un messaggio sul terminale che l'utente può leggere
+    printf("Inserisci il valore di E (0 o 1):\n");
+    // Attende che l'utente inserisca un valore e prema invio
+    scanf("%d", &E);
+    // Mostra un messaggio sul terminale che l'utente può leggere
+    printf("Inserisci il valore di F (0 o 1):\n");
+    // Attende che l'utente inserisca un valore e prema invio
+    scanf("%d", &F);
 
-    if (A != 0 && A != 1 && B != 0 && B != 1) {
+
+    if (A != 0 && A != 1 && B != 0 && B != 1 && C != 0 && C != 1 && D != 0 && D != 1 && E != 0 && E != 1 && F != 0 && F != 1) {
         printf("I valori inseriti non sono 1 o 0\n");
     } else {
         // Procediamo con l'esecuzione solo se il numero è 1 o 0
         printf("I valori inseriti sono 1 o 0\n");
 
-        // Esempio di porta NOT
-        printf("Il valore di A viene trasformato da una porta NOT\n");
-        int notA = NOT(A);
-        printf("Il valore di uscita della porta NOT è: %d\n", notA);
-
-        // Esempio di porta AND
-        printf("I valori di A e B vengono trasformati da una porta AND\n");
-        int andAB = AND(A, B);
-        printf("Il valore di uscita della porta AND è: %d\n", andAB);
-
-        // Esempio di porta OR
-        printf("I valori di A e B vengono trasformati da una porta OR\n");
         int orAB = OR(A, B);
-        printf("Il valore di uscita della porta OR è: %d\n", orAB);
-    }
+        
+        int notB = NOT(B);
+        
+        int andAnotB = AND(A,notB);
+        
+        int orBandAnotB = OR(B,andAnotB);
+        
+        int notorBandAnotB = NOT(orBandAnotB);
+        
+        int orABnotorBandAnotB = OR(orAB,notorBandAnotB);
+        
+        int orEF = OR(E, F);
+        
+        int orDorEF = OR(D,orEF);
+        
+        int orCorDorEF = OR(C,orDorEF);
+        
+        int ororABnotorBandAnotBorCorDorEF = OR(orABnotorBandAnotB,orCorDorEF);
+        printf("Il risultato è: %d\n", ororABnotorBandAnotBorCorDorEF);
+
 
     printf("\n\n");
+    }
 }
